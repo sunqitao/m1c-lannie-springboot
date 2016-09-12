@@ -1,0 +1,33 @@
+
+buildscript {
+  repositories {
+    maven { url "http://repo2.maven.org/maven2/" }
+    mavenLocal()
+    mavenCentral()
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+jar {
+  baseName = 'm1c-lannie-springboot-common'
+  version =  '0.2.0'
+}
+repositories {
+  mavenLocal()
+  mavenCentral()
+  maven { url "https://repo.spring.io/libs-release" }
+}
+dependencies {
+  compile("org.springframework.boot:spring-boot-starter-web")
+  compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1")
+  compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '1.4.0.RELEASE'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter-redis', version: '1.4.0.RELEASE'
+      compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+  testCompile("junit:junit")
+}
