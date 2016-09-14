@@ -1,3 +1,5 @@
+group 'cn.m1c.lannie'
+version '1.1.0-snapshot'
 
 buildscript {
   repositories {
@@ -15,7 +17,7 @@ apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
 jar {
   baseName = 'm1c-lannie-springboot-common'
-  version =  '0.2.0'
+  version =  '1.1.0-snapshot'
 }
 repositories {
   mavenLocal()
@@ -33,3 +35,23 @@ dependencies {
   compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
   testCompile("junit:junit")
 }
+
+
+sourceSets {  
+    main {  
+        java {  
+            srcDir 'src/main/java'  
+        }  
+        resources {  
+            srcDir 'src/main/resources'  
+        }  
+    }  
+}  
+  
+jar {  
+    from {  
+        configurations.compile.collect {  
+            it.isDirectory() ? it: zipTree(it)  
+        }  
+    }  
+}  
